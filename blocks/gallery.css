@@ -1,0 +1,37 @@
+.gallery {
+  display: grid;
+  margin: 50px 200px;
+  max-width: 880px;
+  max-height: 743px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 20px;
+  column-gap: 17px;
+}
+
+.gallery__image {
+  max-width: 282px;
+  max-height: 282px;
+}
+
+.gallery__image-item {
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gallery__image-name {
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  margin: 25px 21px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.material-symbols-outlined {
+  margin-right: 15px;
+}

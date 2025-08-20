@@ -1,0 +1,13 @@
+.header {
+  font-size: 74px;
+  padding-top: 45px;
+  margin: 0 200px;
+  border-bottom: solid 1px #545454;
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.header__subtitle {
+  font-size: 30px;
+  padding-bottom: 50px;
+}
