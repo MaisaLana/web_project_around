@@ -31,11 +31,12 @@
               <h1 class="profile__name">Jacques Cousteau</h1>
               <span class="profile__profession">Explorador</span>
             </div>
+            <button type="button" class="profile__edit-button">
             <img
-              class="profile__edit-button"
+              class="profile__edit-icon"
               src="../images/edit button.png"
               alt="Editar"
-            />
+            /></button>
           </div>
         </div>
         <img
@@ -116,15 +117,21 @@
         <div class="popup__container">
           <h2 class="popup__title">Editar perfil</h2>
           <form class="popup__form">
-            <input type="name" placeholder="Nome" class="popup__item" />
+            <input type="name" id="name" placeholder="Nome" class="popup__item" />
             <input
-              type="lastname"
-              placeholder="Sobrenome"
+              type="description"
+              id="description"
+              placeholder="Descrição"
               class="popup__item"
             />
-          </form>
-          <button type="submit" class="popup__button">Salvar</button>
+            <button type="submit" class="popup__button">Salvar</button>
+          </form>         
         </div>
+        <button type="button" class="popup__button-close">
+            <img class="popup__close-icon"
+            src="./images/Close Icon.png"
+            alt="botão para fechar"/> 
+          </button>
       </section>
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
