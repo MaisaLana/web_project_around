@@ -40,11 +40,66 @@
   cursor: pointer;
 }
 
+.profile__edit-button:hover{
+  opacity: 0.6;
+}
+
 .profile__edit-icon {
   max-width: 24px;
   max-height: 24px;
 }
 .profile__add-button {
-  max-width: 150px;
+  width: 150px;
   max-height: 50px;
+  cursor: pointer;
+  border-radius: 2px;
 }
+
+.profile__add-button:hover{
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 880px){
+  .profile{
+    margin: 50px 50px 0;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .profile{
+    margin: 42px 19px 0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .profile__content {
+  display: grid;
+  justify-items: center;
+  column-gap: 30px;
+}
+
+.profile__information {
+  text-align: center;
+  gap: 10px;
+}
+
+.profile__name {
+  font-size: 22px;
+  }
+
+.profile__profession {
+  font-size: 14px;
+}
+
+.profile__edit-button {
+  max-width: 18px;
+  max-height: 18px;}
+
+.profile__edit-icon {
+  max-width: 18px;
+  max-height: 18px;}
+
+.profile__add-button {
+  width: 100%;
+  margin-top: 36px;
+}}

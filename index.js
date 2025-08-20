@@ -6,6 +6,7 @@ const popupdescription = document.querySelector("#description");
 const username = document.querySelector(".profile__name");
 const userdescription = document.querySelector(".profile__profession");
 const formelement = document.querySelector(".popup__form");
+const like = document.querySelector(".material-symbols-outlined")
 
 function openpopup (){
 popupname.value = username.textContent;
@@ -26,8 +27,13 @@ userdescription.textContent = popupdescription.value;
 closedpopup();
 }
 
+function liked(){
+    like.classList.add("material-symbols-rounded");
+}
+
 editbutton.addEventListener("click", openpopup);
 closepopup.addEventListener("click", closedpopup);
 formelement.addEventListener("submit", handleprofileformsubmit);
+like.addEventListener("click", liked)
 
 

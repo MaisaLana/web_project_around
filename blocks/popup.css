@@ -13,6 +13,10 @@
   inset-block-start: 195px;
   border: #000000 1px;
   color: #000000;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px 0px #00000026;
+
+  
 }
 
 .popup__title {
@@ -23,7 +27,7 @@
 }
 
 .popup__form {
-  margin: 0 36px;
+  padding: 0 36px;
   display: grid;
   row-gap: 29.74px;
 }
@@ -32,7 +36,7 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #00000033;
 }
 
 .popup__button {
@@ -41,8 +45,13 @@
   width: 358px;
   height: 50.15px;
   border-radius: 2px;
-  margin: 48px 0 0 36px;
+  margin: 48px 0 0;
   cursor: pointer;
+  border-radius: 2px;
+}
+
+.popup__button:hover{
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .popup__button-close {
 background: none;
@@ -53,4 +62,21 @@ left: 846.72px;
 width: 40px;
 height: 40px;
 cursor: pointer;
+}
+
+.popup__button-close:hover{
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 880px){
+  .popup__container {
+  inset-inline-start: 225px;
+}
+.popup__button-close {
+left: 646.72px;
+}
+}
+
+@media screen and (max-width: 320px){
+  
 }
