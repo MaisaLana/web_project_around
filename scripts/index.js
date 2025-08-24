@@ -1,39 +1,39 @@
-const editbutton = document.querySelector(".profile__edit-button");
+const editButton = document.querySelector(".profile__edit-button");
 const popup = document.querySelector(".popup");
-const closepopup = document.querySelector(".popup__button-close");
-const popupname = document.querySelector("#name");
-const popupdescription = document.querySelector("#description");
-const username = document.querySelector(".profile__name");
-const userdescription = document.querySelector(".profile__profession");
-const formelement = document.querySelector(".popup__form");
-const like = document.querySelector(".material-symbols-outlined")
+const closePopup = document.querySelector(".popup__button-close");
+const popupName = document.querySelector("#name");
+const popupDescription = document.querySelector("#description");
+const userName = document.querySelector(".profile__name");
+const userDescription = document.querySelector(".profile__profession");
+const formElement = document.querySelector(".popup__form");
+const likes = document.querySelectorAll(".material-symbols-outlined")
 
-function openpopup (){
-popupname.value = username.textContent;
-popupdescription.value = userdescription.textContent;
+function openPopup (){
+popupName.value = userName.textContent;
+popupDescription.value = userDescription.textContent;
 popup.classList.remove('popup');
 popup.classList.add('popup--active');
 }
 
-function closedpopup (){
+function closedPopup (){
 popup.classList.add('popup');
 popup.classList.remove('popup--active');
 }
 
-function handleprofileformsubmit(evt){
+function handleProfileFormSubmit(evt){
 evt.preventDefault();
-username.textContent = popupname.value;
-userdescription.textContent = popupdescription.value;
-closedpopup();
+userName.textContent = popupName.value;
+userDescription.textContent = popupDescription.value;
+closedPopup();
 }
 
 function liked(){
-    like.classList.add("material-symbols-rounded");
+    likes.classList.add("material-symbols-rounded");
 }
 
-editbutton.addEventListener("click", openpopup);
-closepopup.addEventListener("click", closedpopup);
-formelement.addEventListener("submit", handleprofileformsubmit);
-like.addEventListener("click", liked)
+editButton.addEventListener("click", openPopup);
+closePopup.addEventListener("click", closedPopup);
+formElement.addEventListener("submit", handleProfileFormSubmit);
+likes.addEventListener("click", liked)
 
 

@@ -1,14 +1,23 @@
 .popup {
   display: none;
+
+  
 } 
 .popup--active {
+  background: rgba(0,0,0,0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
 }
 
 .popup__container {
   background-color: #ffffff;
   width: 430px;
   height: 330px;
-  position: absolute;
+  position: fixed;
   inset-inline-start: 425px;
   inset-block-start: 195px;
   border: #000000 1px;
@@ -35,6 +44,7 @@
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid #00000033;
+  font-family: "Inter 400", Arial, Helvetica, sans-serif;
 }
 
 .popup__button {
@@ -46,6 +56,7 @@
   margin: 48px 0 0;
   cursor: pointer;
   border-radius: 2px;
+  font-family: "Inter 400", Arial, Helvetica, sans-serif;
 }
 
 .popup__button:hover{
@@ -54,7 +65,7 @@
 .popup__button-close {
 background: none;
 border: none;
-position: absolute;
+position: fixed;
 top: 146.72px;
 left: 846.72px;
 width: 40px;
