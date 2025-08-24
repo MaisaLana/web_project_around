@@ -75,7 +75,7 @@
   }
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 364px){
   .profile{
     margin: 42px 19px 0;
     display: grid;

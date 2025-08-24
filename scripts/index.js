@@ -27,7 +27,7 @@ userDescription.textContent = popupDescription.value;
 closedPopup();
 }
 
-function liked(){
+function like(){
     likes.classList.add("material-symbols-rounded");
 }
 
