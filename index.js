@@ -27,13 +27,13 @@ userdescription.textContent = popupdescription.value;
 closedpopup();
 }
 
-function liked(){
-    like.classList.add("material-symbols-rounded");
-}
+// function liked(){
+//     like.classList.add("material-symbols-rounded");
+// }
 
 editbutton.addEventListener("click", openpopup);
 closepopup.addEventListener("click", closedpopup);
 formelement.addEventListener("submit", handleprofileformsubmit);
-like.addEventListener("click", liked)
+// like.addEventListener("click", liked)
 
 
