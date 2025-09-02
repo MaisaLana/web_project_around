@@ -1,6 +1,5 @@
 .popup {
   display: none;
-
   
 } 
 .popup--active {
@@ -76,6 +75,11 @@ cursor: pointer;
 .popup__button-close:hover{
   opacity: 0.6;
 }
+
+.popup__gallery {
+  display: none;
+  
+} 
 
 @media screen and (max-width: 880px){
   .popup__container {

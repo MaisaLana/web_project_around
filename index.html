@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-      <section class="popup">
+      <section id="popup__profile" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Editar perfil</h2>
           <form class="popup__form">
@@ -130,6 +130,26 @@
               class="popup__item"
             >
             <button type="submit" class="popup__button">Salvar</button>
+          </form>         
+        </div>
+        <button type="button" class="popup__button-close">
+            <img class="popup__close-icon"
+            src="./images/closeicon.png"
+            alt="botão para fechar"> 
+          </button>
+      </section>
+      <section id="popup__gallery" class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Novo local</h2>
+          <form class="popup__form">
+            <input type="text" id="title" placeholder="Título" class="popup__item">
+            <input
+              type="text"
+              id="image__link"
+              placeholder="Link de imagem"
+              class="popup__item"
+            >
+            <button type="submit" class="popup__button">Criar</button>
           </form>         
         </div>
         <button type="button" class="popup__button-close">

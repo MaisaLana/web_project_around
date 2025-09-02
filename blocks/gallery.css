@@ -62,3 +62,9 @@
   grid-template-rows: repeat(6, 1fr);
   margin: 36px 19px 0;
 }}
+
+/* LIKED
+ .song__like_active {
+  opacity: 1;
+  background: url(https://practicum-content.s3.us-west-1.amazonaws.com/web-code/dom/moved_heart-filled.svg) center no-repeat;
+} */
