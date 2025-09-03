@@ -15,7 +15,10 @@ const popupdescription = document.querySelector("#description");
 const username = document.querySelector(".profile__name");
 const userdescription = document.querySelector(".profile__profession");
 const formelement = document.querySelector(".popup__form");
-// const like = document.querySelector(".material-symbols-outlined"
+
+
+//Gallery__Elements
+const likes = document.querySelectorAll(".material-symbols-outlined");
 
 //Function general
 function openpopup (openPopup){
@@ -52,9 +55,10 @@ closePopupGallery.addEventListener("click", () => { closedpopup (popupGallery)
 });
 
 
-
-// function liked(){
-//     like.classList.add("material-symbols-rounded");
-// }
-
-// like.addEventListener("click", liked)
+//Gallery_likes
+likes.forEach(like => {
+like.addEventListener("click", () => {
+like.classList.toggle("material-symbols-rounded");  
+like.classList.toggle("material-symbols-outlined"); 
+});
+});
