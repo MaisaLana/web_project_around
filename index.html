@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-      <section class="popup">
+      <section id="popup__profile" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Editar perfil</h2>
           <form class="popup__form">
@@ -138,6 +138,28 @@
             alt="botão para fechar"> 
           </button>
       </section>
+      
+      <section id="popup__gallery" class="popup--active">
+        <div class="popup__container">
+          <h2 class="popup__title">Nova local</h2>
+          <form class="popup__form">
+            <input type="text" id="title_image" placeholder="Titulo" class="popup__item">
+            <input
+              type="text"
+              id="link_image"
+              placeholder="Link de imagem"
+              class="popup__item"
+            >
+            <button type="submit" class="popup__button">Criar</button>
+          </form>         
+        </div>
+        <button type="button" class="popup__button-close">
+            <img class="popup__close-icon"
+            src="./images/CloseIcon.png"
+            alt="botão para fechar"> 
+          </button>
+      </section>
+
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
 
