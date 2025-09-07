@@ -111,3 +111,5 @@ trashs.forEach(trash => {
     trash.closest(".gallery__item").classList.toggle("hidden");
 });
 })
+
+//uhul
