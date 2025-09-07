@@ -98,3 +98,4 @@ closedpopup (popupGallery);
 }
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
+.
