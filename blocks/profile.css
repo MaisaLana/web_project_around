@@ -112,3 +112,10 @@
   width: 100%;
   margin-top: 36px;
 }}
+
+@media screen and (max-width: 800px){
+.profile__content {
+  gap: 10px;
+}
+
+}
