@@ -1,22 +1,25 @@
 .popup {
   display: none;
+  
 } 
 .popup--active {
+   
 }
+
 
 .popup__container {
   background-color: #ffffff;
   width: 430px;
   height: 330px;
-  position: absolute;
+  position: fixed;
   inset-inline-start: 425px;
   inset-block-start: 195px;
   border: #000000 1px;
   color: #000000;
   border-radius: 10px;
   box-shadow: 0px 0px 25px 0px #00000026;
+  overflow: hidden;  
 
-  
 }
 
 .popup__title {
@@ -56,7 +59,7 @@
 .popup__button-close {
 background: none;
 border: none;
-position: absolute;
+position: fixed;
 top: 146.72px;
 left: 846.72px;
 width: 40px;

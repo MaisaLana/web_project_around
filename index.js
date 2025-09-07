@@ -23,7 +23,9 @@ const galleryButton = popupGallery.querySelector(".popup__button");
 //Gallery__Elements
 const likes = document.querySelectorAll(".material-symbols-outlined");
 const card = document.querySelector(".gallery");
-
+const popupimage = document.querySelector(".popup__image");
+const closePopupImage = popupimage.querySelector(".image__close");
+const galleryimages = card.querySelectorAll(".gallery__image");
 
 
 //Function general
@@ -112,4 +114,19 @@ trashs.forEach(trash => {
 });
 })
 
-//uhul
+//Popup image
+
+const popupimg = document.querySelector(".popup__image-expand");
+galleryimages.forEach(galleryimage => {
+  galleryimage.addEventListener("click", () => {
+    const imagename = galleryimage.closest(".gallery__item").querySelector(".gallery__image-name").textContent;
+    const imagefooter = document.querySelector(".popup__image-footer");
+    popupimg.src = galleryimage.src;
+    popupimg.alt = galleryimage.alt;
+    imagefooter.textContent = imagename;
+
+    popupimage.setAttribute("style","display: flex");
+  });
+});
+
+closePopupImage.addEventListener("click", () => {popupimage.setAttribute("style","display: none")});
