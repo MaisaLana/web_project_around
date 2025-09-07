@@ -82,6 +82,11 @@ function addCard (title, link){
     cardTitle.textContent = title;
     cardLink.src = link;
 
+    const trashButton = cardElement.querySelector(".delete.material-symbols-rounded");
+    trashButton.addEventListener("click", () => {     
+    trashButton.closest(".gallery__item").classList.toggle("hidden");
+   });
+
     const likeButton = cardElement.querySelector(".material-symbols-outlined");
     likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("material-symbols-rounded");
@@ -98,4 +103,11 @@ closedpopup (popupGallery);
 }
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
-.
+
+//Delete image
+const trashs = document.querySelectorAll(".delete.material-symbols-rounded");
+trashs.forEach(trash => {
+    trash.addEventListener("click", () => {     
+    trash.closest(".gallery__item").classList.toggle("hidden");
+});
+})

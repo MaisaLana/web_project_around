@@ -51,6 +51,20 @@
   cursor:pointer;
 }
 
+.delete{
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 249px;
+}
+
+.delete:hover{
+  opacity: 0.6;
+}
+
+.hidden{
+  display: none;
+}
+
 @media screen and (max-width: 880px){
 .gallery {
   grid-template-columns: repeat(2, 1fr);
