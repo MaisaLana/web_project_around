@@ -3,26 +3,18 @@
   
 } 
 .popup--active {
-<<<<<<< HEAD
-  background: rgba(0,0,0,0.9);
-=======
   display: flex;                    
   background: rgba(0, 0, 0, 0.7);
   width: 100vw;
   height: 100vh;
->>>>>>> feature/gallery
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-<<<<<<< HEAD
-  background: rgba(0,0,0,0.6);
-=======
   justify-content: center;
   align-items: center;
   z-index: 1000;
->>>>>>> feature/gallery
 }
 
 
@@ -37,11 +29,8 @@
   color: #000000;
   border-radius: 10px;
   box-shadow: 0px 0px 25px 0px #00000026;
-<<<<<<< HEAD
-=======
   overflow: hidden;  
 
->>>>>>> feature/gallery
 }
 
 .popup__title {
@@ -111,11 +100,6 @@ left: 646.72px;
 }
 }
 
-<<<<<<< HEAD
-@media screen and (max-width: 364px){
-
-}
-=======
 @media screen and (max-width: 320px){
 .popup__container{
 width: 282px;
@@ -160,4 +144,3 @@ left: 264.62px;
 }
   
 
->>>>>>> feature/gallery
