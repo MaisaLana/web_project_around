@@ -15,10 +15,16 @@ const popupdescription = document.querySelector("#description");
 const username = document.querySelector(".profile__name");
 const userdescription = document.querySelector(".profile__profession");
 const formelement = document.querySelector(".popup__form");
-
+const imageLink = popupGallery.querySelector("#link_image");
+const imageTitle = popupGallery.querySelector("#title_image");
+const galleryForm = popupGallery.querySelector(".popup__form");
+const galleryButton = popupGallery.querySelector(".popup__button");
 
 //Gallery__Elements
 const likes = document.querySelectorAll(".material-symbols-outlined");
+const card = document.querySelector(".gallery");
+
+
 
 //Function general
 function openpopup (openPopup){
@@ -37,6 +43,7 @@ username.textContent = popupname.value;
 userdescription.textContent = popupdescription.value;
 closedpopup(popupProfile);
 }
+
 
 //profile
 editbutton.addEventListener("click", () => {
@@ -62,3 +69,32 @@ like.classList.toggle("material-symbols-rounded");
 like.classList.toggle("material-symbols-outlined"); 
 });
 });
+
+function addCard (title, link){
+    const template = 
+    document.querySelector("#gallery__template")
+    .content.querySelector(".gallery__item");
+
+    const cardElement = template.cloneNode(true);
+    const cardTitle = cardElement.querySelector(".gallery__image-name");
+    const cardLink = cardElement.querySelector(".gallery__image");
+
+    cardTitle.textContent = title;
+    cardLink.src = link;
+
+    const likeButton = cardElement.querySelector(".material-symbols-outlined");
+    likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("material-symbols-rounded");
+    likeButton.classList.toggle("material-symbols-outlined");
+  });
+
+    card.prepend(cardElement);
+}
+
+function handlegalleryformsubmit(evt){
+evt.preventDefault ();
+addCard (imageTitle.value, imageLink.value);
+closedpopup (popupGallery);
+}
+
+galleryForm.addEventListener("submit", handlegalleryformsubmit);
