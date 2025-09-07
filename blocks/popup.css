@@ -3,7 +3,18 @@
   
 } 
 .popup--active {
-   
+  display: flex;                    
+  background: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 
@@ -33,6 +44,7 @@
   padding: 0 36px;
   display: grid;
   row-gap: 29.74px;
+  font-family: "Inter 400", Arial, Helvetica, sans-serif;
 }
 
 .popup__item {
@@ -40,6 +52,7 @@
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid #00000033;
+  font-family: "Inter 400", Arial, Helvetica, sans-serif;
 }
 
 .popup__button {

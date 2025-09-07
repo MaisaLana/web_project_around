@@ -24,12 +24,21 @@
   font-size: 42px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 500;
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .profile__profession {
   font-size: 18px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 
 .profile__edit-button {

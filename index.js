@@ -3,18 +3,18 @@ const popupProfile = document.querySelector("#popup__profile");
 const popupGallery = document.querySelector("#popup__gallery");
 
 //buttons
-const editbutton = document.querySelector(".profile__edit-button");
+const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const closePopupProfile = popupProfile.querySelector(".popup__button-close");
 const closePopupGallery = popupGallery.querySelector(".popup__button-close");
 
 
 //Popup__Elements
-const popupname = document.querySelector("#name");
-const popupdescription = document.querySelector("#description");
-const username = document.querySelector(".profile__name");
-const userdescription = document.querySelector(".profile__profession");
-const formelement = document.querySelector(".popup__form");
+const popupName = document.querySelector("#name");
+const popupDescription = document.querySelector("#description");
+const userName = document.querySelector(".profile__name");
+const userDescription = document.querySelector(".profile__profession");
+const formElement = document.querySelector(".popup__form");
 const imageLink = popupGallery.querySelector("#link_image");
 const imageTitle = popupGallery.querySelector("#title_image");
 const galleryForm = popupGallery.querySelector(".popup__form");
@@ -23,44 +23,44 @@ const galleryButton = popupGallery.querySelector(".popup__button");
 //Gallery__Elements
 const likes = document.querySelectorAll(".material-symbols-outlined");
 const card = document.querySelector(".gallery");
-const popupimage = document.querySelector(".popup__image");
-const closePopupImage = popupimage.querySelector(".image__close");
-const galleryimages = card.querySelectorAll(".gallery__image");
+const popupImage = document.querySelector(".popup__image");
+const closePopupImage = popupImage.querySelector(".image__close");
+const galleryImages = card.querySelectorAll(".gallery__image");
 
 
 //Function general
-function openpopup (openPopup){
+function openedPopup (openPopup){
 openPopup.classList.remove('popup');
 openPopup.classList.add('popup--active');
 }
 
-function closedpopup (closedPopup){
-closedPopup.classList.add('popup');
-closedPopup.classList.remove('popup--active');
+function closedPopup (closePopup){
+closePopup.classList.add('popup');
+closePopup.classList.remove('popup--active');
 }
 
-function handleprofileformsubmit(evt){
+function handleProfileFormSubmit(evt){
 evt.preventDefault();
-username.textContent = popupname.value;
-userdescription.textContent = popupdescription.value;
-closedpopup(popupProfile);
+userName.textContent = popupName.value;
+userDescription.textContent = popupDescription.value;
+closedPopup(popupProfile);
 }
 
 
 //profile
-editbutton.addEventListener("click", () => {
-popupname.value = username.textContent;
-popupdescription.value = userdescription.textContent;
- openpopup(popupProfile)});
+editButton.addEventListener("click", () => {
+popupName.value = userName.textContent;
+popupDescription.value = userDescription.textContent;
+ openedPopup(popupProfile)});
 
-closePopupProfile.addEventListener("click", () => { closedpopup (popupProfile)
+closePopupProfile.addEventListener("click", () => { closedPopup (popupProfile)
 });
-formelement.addEventListener("submit", handleprofileformsubmit);
+formElement.addEventListener("submit", handleProfileFormSubmit);
 
 //Gallery
-addButton.addEventListener("click", () =>{ openpopup (popupGallery)
+addButton.addEventListener("click", () =>{ openedPopup (popupGallery)
 });
-closePopupGallery.addEventListener("click", () => { closedpopup (popupGallery)
+closePopupGallery.addEventListener("click", () => { closedPopup (popupGallery)
 });
 
 
@@ -101,7 +101,7 @@ function addCard (title, link){
 function handlegalleryformsubmit(evt){
 evt.preventDefault ();
 addCard (imageTitle.value, imageLink.value);
-closedpopup (popupGallery);
+closedPopup (popupGallery);
 }
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
@@ -116,17 +116,17 @@ trashs.forEach(trash => {
 
 //Popup image
 
-const popupimg = document.querySelector(".popup__image-expand");
-galleryimages.forEach(galleryimage => {
-  galleryimage.addEventListener("click", () => {
-    const imagename = galleryimage.closest(".gallery__item").querySelector(".gallery__image-name").textContent;
-    const imagefooter = document.querySelector(".popup__image-footer");
-    popupimg.src = galleryimage.src;
-    popupimg.alt = galleryimage.alt;
-    imagefooter.textContent = imagename;
+const popupImg = document.querySelector(".popup__image-expand");
+galleryImages.forEach(galleryImage => {
+  galleryImage.addEventListener("click", () => {
+    const imageName = galleryImage.closest(".gallery__item").querySelector(".gallery__image-name").textContent;
+    const imageFooter = document.querySelector(".popup__image-footer");
+    popupImg.src = galleryImage.src;
+    popupImg.alt = galleryImage.alt;
+    imageFooter.textContent = imageName;
 
-    popupimage.setAttribute("style","display: flex");
+    popupImage.setAttribute("style","display: flex");
   });
 });
 
-closePopupImage.addEventListener("click", () => {popupimage.setAttribute("style","display: none")});
+closePopupImage.addEventListener("click", () => {popupImage.setAttribute("style","display: none")});
