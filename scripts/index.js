@@ -66,9 +66,9 @@ closePopupGallery.addEventListener("click", () => { closedPopup (popupGallery)
 
 //Gallery_likes
 likes.forEach(like => {
-like.addEventListener("click", () => {
-like.classList.toggle("material-symbols-rounded");  
-like.classList.toggle("material-symbols-outlined"); 
+  like.addEventListener("click", () => {
+  like.classList.toggle("material-symbols-rounded");  
+  like.classList.toggle("material-symbols-outlined"); 
 });
 });
 
