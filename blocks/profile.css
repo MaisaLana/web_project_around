@@ -25,36 +25,21 @@
   font-size: 42px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 500;
-<<<<<<< HEAD
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 500px;
-=======
   max-width: 500px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
->>>>>>> feature/gallery
 }
 
 .profile__profession {
   font-size: 18px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
-<<<<<<< HEAD
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 500px;
-  display: inline-block;
-=======
   max-width: 500px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
->>>>>>> feature/gallery
 }
 
 .profile__edit-button {
