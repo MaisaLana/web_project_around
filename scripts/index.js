@@ -23,8 +23,8 @@ const galleryButton = popupGallery.querySelector(".popup__button");
 //Gallery__Elements
 const likes = document.querySelectorAll(".material-symbols-outlined");
 const card = document.querySelector(".gallery");
-const popupImage = document.querySelector(".popup__image");
-const closePopupImage = popupImage.querySelector(".image__close");
+const popupImage = document.querySelector(".popup--image");
+const closePopupImage = popupImage.querySelector(".popup__image-close");
 const galleryImages = card.querySelectorAll(".gallery__image");
 
 

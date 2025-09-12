@@ -70,7 +70,7 @@
   display: none;
 }
 
-.popup__image{
+.popup--image{
   position: fixed;
   top: 0;
   left: 0;
@@ -106,7 +106,7 @@
   object-fit: cover; 
 }
 
-.image__close {
+.popup__image-close {
 background: none;
 border: none;
 position: absolute;
@@ -117,7 +117,7 @@ height: 40px;
 cursor: pointer;
 }
 
-.image__close:hover{
+.popup__image-close:hover{
   opacity: 0.6;
 }
 
@@ -139,7 +139,7 @@ font-size: 12px;
   margin: 36px 19px 0;
 }
 
-.image__close {
+.popup__image-close {
 left: 235px;
 width:30px;
 height: 30px;
