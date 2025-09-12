@@ -72,6 +72,8 @@ likes.forEach(like => {
 });
 });
 
+
+// adicionar imagem 
 function addCard (title, link){
     const template = 
     document.querySelector("#gallery__template")
@@ -93,6 +95,18 @@ function addCard (title, link){
     likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("material-symbols-rounded");
     likeButton.classList.toggle("material-symbols-outlined");
+
+  });
+
+  
+    cardLink.addEventListener("click", () => {
+    const popupImg = document.querySelector(".popup__image-expand");
+    const imageFooter = document.querySelector(".popup__image-footer");
+
+    popupImg.src = cardLink.src;
+    imageFooter.textContent = cardTitle.textContent;
+
+    popupImage.style.display = "flex"; 
   });
 
     card.prepend(cardElement);
@@ -106,15 +120,19 @@ closedPopup (popupGallery);
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
 
+
+
 //Delete image
 const trashs = document.querySelectorAll(".delete.material-symbols-rounded");
 trashs.forEach(trash => {
     trash.addEventListener("click", () => {     
     trash.closest(".gallery__item").classList.toggle("hidden");
+
+
 });
 })
 
-//Popup image
+//expandir image
 
 const popupImg = document.querySelector(".popup__image-expand");
 galleryImages.forEach(galleryImage => {
