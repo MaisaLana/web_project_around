@@ -47,6 +47,11 @@
   font-family: "Inter 400", Arial, Helvetica, sans-serif;
 }
 
+.popup__items {
+  display: flex;
+  flex-direction: column;
+}
+
 .popup__item {
   border-top: 0;
   border-left: 0;
@@ -55,16 +60,40 @@
   font-family: "Inter 400", Arial, Helvetica, sans-serif;
 }
 
+
+.popup__item-error {
+  border-bottom: 1px solid #FF0000;
+  
+}
+
+.popup__item-error-message{
+  font-size: 12px;
+  color: #FF0000;
+  margin-top: 5px;
+}
 .popup__button {
   color: #ffffff;
-  background-color: #000000;
+  background-color:#000000;
   width: 358px;
   height: 50.15px;
   border-radius: 2px;
-  margin: 48px 0 0;
+  margin: 0;
   cursor: pointer;
-  border-radius: 2px;
   font-family: "Inter 400", Arial, Helvetica, sans-serif;
+ 
+}
+
+.popup__button-error {
+  color: #000000;
+  background-color: #ffffff;  
+  width: 358px;
+  height: 50.15px;
+  border-radius: 2px;
+  margin: 0;
+  cursor: pointer;
+  font-family: "Inter 400", Arial, Helvetica, sans-serif;
+  border:1px solid #000000;
+  opacity: 0.2;
 }
 
 .popup__button:hover{
@@ -91,6 +120,7 @@ cursor: pointer;
   
 } 
 
+  
 @media screen and (max-width: 880px){
   .popup__container {
   inset-inline-start: 225px;
@@ -139,6 +169,7 @@ left: 264.62px;
  font-size: 18px;
   color: #C4C4C4;
 }
+
 
 
 }

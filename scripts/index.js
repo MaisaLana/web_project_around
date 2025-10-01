@@ -27,7 +27,6 @@ const popupImage = document.querySelector(".popup--image");
 const closePopupImage = popupImage.querySelector(".popup__image-close");
 const galleryImages = card.querySelectorAll(".gallery__image");
 
-
 //Function general
 function openedPopup (openPopup){
 openPopup.classList.remove('popup');
@@ -55,7 +54,8 @@ popupDescription.value = userDescription.textContent;
 
 closePopupProfile.addEventListener("click", () => { closedPopup (popupProfile)
 });
-formElement.addEventListener("submit", handleProfileFormSubmit);
+const submit = formElement.addEventListener("submit", handleProfileFormSubmit);
+formElement.addEventListener("keydown", submit)
 
 //Gallery
 addButton.addEventListener("click", () =>{ openedPopup (popupGallery)
@@ -147,4 +147,22 @@ galleryImages.forEach(galleryImage => {
   });
 });
 
-closePopupImage.addEventListener("click", () => {popupImage.setAttribute("style","display: none")});
+closePopupImage.addEventListener("click", () => {
+  popupImage.setAttribute("style","display: none")});
+
+
+  //fecha popups clicando fora
+const popups = document.querySelectorAll('.popup');
+popups.forEach(popup => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === popup) {
+      return closedPopup(popup);
+    }
+  });
+});
+
+popupImage.addEventListener('click', (evt) => {
+  if (evt.target === popupImage){
+    return popupImage.setAttribute("style","display: none");
+  }
+});

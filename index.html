@@ -128,14 +128,31 @@
       <section id="popup__profile" class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Editar perfil</h2>
-          <form class="popup__form">
-            <input type="text" id="name" placeholder="Nome" class="popup__item">
+          <form class="popup__form" novalidate>
+            <div class="popup__items">
+            <input 
+            type="text" 
+            id="name" 
+            placeholder="Nome" 
+            class="popup__item" 
+            minlength="2" 
+            maxlength="40" 
+            required
+            >
+            <span class="popup__item-error-message"></span>
+          </div>
+          <div class="popup__items">
             <input
               type="text"
               id="description"
               placeholder="Descrição"
               class="popup__item"
+              minlength="2" 
+              maxlength="200"
+              required
             >
+            <span class="popup__item-error-message"></span>
+            </div>
             <button type="submit" class="popup__button">Salvar</button>
           </form>         
         </div>
@@ -150,13 +167,27 @@
         <div class="popup__container">
           <h2 class="popup__title">Nova local</h2>
           <form class="popup__form">
-            <input type="text" id="title_image" placeholder="Titulo" class="popup__item">
+            <div class="popup__items">
+            <input 
+            type="text" 
+            id="title_image" 
+            placeholder="Titulo" 
+            class="popup__item"
+            minlength="2"
+            maxlength="30"
+            required>
+            <span class="popup__item-error-message"></span>
+            </div>
+            <div class="popup__items">
             <input
-              type="text"
+              type="url"
               id="link_image"
               placeholder="Link de imagem"
               class="popup__item"
+              required
             >
+            <span class="popup__item-error-message"></span>
+            </div>
             <button type="submit" class="popup__button">Criar</button>
           </form>         
         </div>
@@ -167,7 +198,7 @@
           </button>
       </section>
 
-      <div class="popup popup--image">
+      <div id="area" class="popup popup--image">
         <div class="popup__image-content">
           <img class="popup__image-expand" src="images/lagolouise.png" alt="imagem do lago louise"/>
           <button type="button" class="popup__image-close">
@@ -198,5 +229,6 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <!-- <script src="./scripts/validator.js"></script> -->
   </body>
 </html>
