@@ -15,8 +15,8 @@ const popupDescription = document.querySelector("#description");
 const userName = document.querySelector(".profile__name");
 const userDescription = document.querySelector(".profile__profession");
 const formElement = document.querySelector(".popup__form");
-const imageLink = popupGallery.querySelector("#link_image");
-const imageTitle = popupGallery.querySelector("#title_image");
+const imageLink = popupGallery.querySelector("#image-link");
+const imageTitle = popupGallery.querySelector("#image-title");
 const galleryForm = popupGallery.querySelector(".popup__form");
 const galleryButton = popupGallery.querySelector(".popup__button");
 
