@@ -166,3 +166,18 @@ popupImage.addEventListener('click', (evt) => {
     return popupImage.setAttribute("style","display: none");
   }
 });
+
+// fecha apertando esc 
+popups.forEach(popup => {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === "Escape") {
+      return closedPopup(popup);
+    }
+  });
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === "Escape"){
+    return popupImage.setAttribute("style","display: none");
+  } 
+});
