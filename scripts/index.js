@@ -1,3 +1,5 @@
+import { Card } from "./card.js";
+
 //Popups
 const popupProfile = document.querySelector("#popup__profile");
 const popupGallery = document.querySelector("#popup__gallery");
@@ -75,42 +77,45 @@ likes.forEach(like => {
 
 // adicionar imagem 
 function addCard (title, link){
-    const template = 
-    document.querySelector("#gallery__template")
-    .content.querySelector(".gallery__item");
+    const cardInstance = new Card(title,link, "#gallery__template");
+    const cardElement = cardInstance.generateCard();
+    card.prepend(cardElement);
+  }
 
-    const cardElement = template.cloneNode(true);
-    const cardTitle = cardElement.querySelector(".gallery__image-name");
-    const cardLink = cardElement.querySelector(".gallery__image");
+    //Gettemplate do card.js // document.querySelector("#gallery__template")
+    // .content.querySelector(".gallery__item");
+    // const cardElement = template.cloneNode(true);
+   
+    //generateeCard do card.js // const cardTitle = cardElement.querySelector(".gallery__image-name");
+    // const cardLink = cardElement.querySelector(".gallery__image");
+    // cardTitle.textContent = title;
+    // cardLink.src = link;
 
-    cardTitle.textContent = title;
-    cardLink.src = link;
+    //Seteventlisteners do card.js // const trashButton = cardElement.querySelector(".delete.material-symbols-rounded");
+    // trashButton.addEventListener("click", () => {     
+    //handledelete do card.js // trashButton.closest(".gallery__item").classList.toggle("hidden");
+  //  });
 
-    const trashButton = cardElement.querySelector(".delete.material-symbols-rounded");
-    trashButton.addEventListener("click", () => {     
-    trashButton.closest(".gallery__item").classList.toggle("hidden");
-   });
+   //Seteventlisteners do card.js // const likeButton = cardElement.querySelector(".material-symbols-outlined");
+    // likeButton.addEventListener("click", () => {
+    /// handleLike do card.js // likeButton.classList.toggle("material-symbols-rounded");
+    // likeButton.classList.toggle("material-symbols-outlined");
 
-    const likeButton = cardElement.querySelector(".material-symbols-outlined");
-    likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("material-symbols-rounded");
-    likeButton.classList.toggle("material-symbols-outlined");
-
-  });
+  // });
 
   
-    cardLink.addEventListener("click", () => {
-    const popupImg = document.querySelector(".popup__image-expand");
-    const imageFooter = document.querySelector(".popup__image-footer");
+//     cardLink.addEventListener("click", () => {
+//     const popupImg = document.querySelector(".popup__image-expand");
+//     const imageFooter = document.querySelector(".popup__image-footer");
 
-    popupImg.src = cardLink.src;
-    imageFooter.textContent = cardTitle.textContent;
+//     popupImg.src = cardLink.src;
+//     imageFooter.textContent = cardTitle.textContent;
 
-    popupImage.style.display = "flex"; 
-  });
+//     popupImage.style.display = "flex"; 
+//   });
 
-    card.prepend(cardElement);
-}
+//     card.prepend(cardElement);
+// }
 
 function handlegalleryformsubmit(evt){
 evt.preventDefault ();
