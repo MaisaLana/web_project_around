@@ -1,4 +1,11 @@
 import { Card } from "./card.js";
+import { openPopup, closePopup, setEscClose, setOverlayClose} from "./utils.js";
+import { FormValidator } from "./formValidator.js";
+
+
+//validação
+const validator = new FormValidator();
+validator.enableValidation();
 
 //Popups
 const popupProfile = document.querySelector("#popup__profile");
@@ -10,7 +17,6 @@ const addButton = document.querySelector(".profile__add-button");
 const closePopupProfile = popupProfile.querySelector(".popup__button-close");
 const closePopupGallery = popupGallery.querySelector(".popup__button-close");
 
-
 //Popup__Elements
 const popupName = document.querySelector("#name");
 const popupDescription = document.querySelector("#description");
@@ -20,7 +26,6 @@ const formElement = document.querySelector(".popup__form");
 const imageLink = popupGallery.querySelector("#image-link");
 const imageTitle = popupGallery.querySelector("#image-title");
 const galleryForm = popupGallery.querySelector(".popup__form");
-const galleryButton = popupGallery.querySelector(".popup__button");
 
 //Gallery__Elements
 const likes = document.querySelectorAll(".material-symbols-outlined");
@@ -29,42 +34,42 @@ const popupImage = document.querySelector(".popup--image");
 const closePopupImage = popupImage.querySelector(".popup__image-close");
 const galleryImages = card.querySelectorAll(".gallery__image");
 
-//Function general
-function openedPopup (openPopup){
-openPopup.classList.remove('popup');
-openPopup.classList.add('popup--active');
-}
-
-function closedPopup (closePopup){
-closePopup.classList.add('popup');
-closePopup.classList.remove('popup--active');
-}
-
 function handleProfileFormSubmit(evt){
 evt.preventDefault();
 userName.textContent = popupName.value;
 userDescription.textContent = popupDescription.value;
-closedPopup(popupProfile);
+closePopup(popupProfile);
 }
 
+//Expandir imagem
+function openImagePopup(title, link){
+  const imageFooter = document.querySelector(".popup__image-footer");
+  popupImg.src = link;
+  popupImage.style.display = "flex";
+  imageFooter.textContent = title;
+}
 
 //profile
 editButton.addEventListener("click", () => {
 popupName.value = userName.textContent;
 popupDescription.value = userDescription.textContent;
- openedPopup(popupProfile)});
+ openPopup(popupProfile)});
 
-closePopupProfile.addEventListener("click", () => { closedPopup (popupProfile)
+closePopupProfile.addEventListener("click", () => { closePopup (popupProfile)
 });
 const submit = formElement.addEventListener("submit", handleProfileFormSubmit);
 formElement.addEventListener("keydown", submit)
 
-//Gallery
-addButton.addEventListener("click", () =>{ openedPopup (popupGallery)
-});
-closePopupGallery.addEventListener("click", () => { closedPopup (popupGallery)
-});
+setOverlayClose(popupProfile);
+setEscClose(popupProfile);
 
+//Gallery
+addButton.addEventListener("click", () =>{ openPopup (popupGallery)
+});
+closePopupGallery.addEventListener("click", () => { closePopup (popupGallery)
+});
+setOverlayClose(popupGallery);
+setEscClose(popupGallery);
 
 //Gallery_likes
 likes.forEach(like => {
@@ -77,68 +82,34 @@ likes.forEach(like => {
 
 // adicionar imagem 
 function addCard (title, link){
-    const cardInstance = new Card(title,link, "#gallery__template");
+    const cardInstance = new Card(title,link, "#gallery__template",openImagePopup);
     const cardElement = cardInstance.generateCard();
     card.prepend(cardElement);
-  }
+  };
 
-    //Gettemplate do card.js // document.querySelector("#gallery__template")
-    // .content.querySelector(".gallery__item");
-    // const cardElement = template.cloneNode(true);
-   
-    //generateeCard do card.js // const cardTitle = cardElement.querySelector(".gallery__image-name");
-    // const cardLink = cardElement.querySelector(".gallery__image");
-    // cardTitle.textContent = title;
-    // cardLink.src = link;
+  const initialCards = [
+  { name: "Vale de Yosemite", link: "images/valeyousemite.jpg" },
+  { name: "Lago Louise", link: "images/lagolouise.png" },
+  { name: "Montanhas Care...", link: "images/montanhas.png" },
+  { name: "Latemar", link: "images/latemar.png" },
+  { name: "Parque Nacional...", link: "images/parquenacional.png" },
+  { name: "Lago de Braies", link: "images/lagodebraies.png" }
+];
 
-    //Seteventlisteners do card.js // const trashButton = cardElement.querySelector(".delete.material-symbols-rounded");
-    // trashButton.addEventListener("click", () => {     
-    //handledelete do card.js // trashButton.closest(".gallery__item").classList.toggle("hidden");
-  //  });
-
-   //Seteventlisteners do card.js // const likeButton = cardElement.querySelector(".material-symbols-outlined");
-    // likeButton.addEventListener("click", () => {
-    /// handleLike do card.js // likeButton.classList.toggle("material-symbols-rounded");
-    // likeButton.classList.toggle("material-symbols-outlined");
-
-  // });
-
-  
-//     cardLink.addEventListener("click", () => {
-//     const popupImg = document.querySelector(".popup__image-expand");
-//     const imageFooter = document.querySelector(".popup__image-footer");
-
-//     popupImg.src = cardLink.src;
-//     imageFooter.textContent = cardTitle.textContent;
-
-//     popupImage.style.display = "flex"; 
-//   });
-
-//     card.prepend(cardElement);
-// }
+initialCards.forEach((item) => {
+  addCard(item.name, item.link);
+});
 
 function handlegalleryformsubmit(evt){
 evt.preventDefault ();
 addCard (imageTitle.value, imageLink.value);
-closedPopup (popupGallery);
+closePopup (popupGallery);
 }
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
 
 
-
-//Delete image
-const trashs = document.querySelectorAll(".delete.material-symbols-rounded");
-trashs.forEach(trash => {
-    trash.addEventListener("click", () => {     
-    trash.closest(".gallery__item").classList.toggle("hidden");
-
-
-});
-})
-
 //expandir image
-
 const popupImg = document.querySelector(".popup__image-expand");
 galleryImages.forEach(galleryImage => {
   galleryImage.addEventListener("click", () => {
@@ -148,41 +119,11 @@ galleryImages.forEach(galleryImage => {
     popupImg.alt = galleryImage.alt;
     imageFooter.textContent = imageName;
 
-    popupImage.setAttribute("style","display: flex");
+    openPopup(popupImage);
   });
 });
 
 closePopupImage.addEventListener("click", () => {
-  popupImage.setAttribute("style","display: none")});
-
-
-  //fecha popups clicando fora
-const popups = document.querySelectorAll('.popup');
-popups.forEach(popup => {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target === popup) {
-      return closedPopup(popup);
-    }
-  });
-});
-
-popupImage.addEventListener('click', (evt) => {
-  if (evt.target === popupImage){
-    return popupImage.setAttribute("style","display: none");
-  }
-});
-
-// fecha apertando esc 
-popups.forEach(popup => {
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === "Escape") {
-      return closedPopup(popup);
-    }
-  });
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === "Escape"){
-    return popupImage.setAttribute("style","display: none");
-  } 
-});
+closePopup(popupImage)});
+setEscClose(popupImage);
+setOverlayClose(popupImage);
