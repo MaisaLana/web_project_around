@@ -123,6 +123,8 @@ galleryImages.forEach(galleryImage => {
   });
 });
 
+
+
 closePopupImage.addEventListener("click", () => {
 closePopup(popupImage)});
 setEscClose(popupImage);
