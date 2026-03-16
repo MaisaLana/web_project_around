@@ -22,27 +22,33 @@ export class Card {
   }
 
   _handleDelete(evt) {
-    evt.target.closest(".gallery__item").classList.toggle("hidden");
+  this._element.remove();
   }
 
   _setEventListeners() {
     const likeButton = this._element.querySelector(".material-symbols-outlined");
-    const trashButton = this._element.querySelector(".delete.material-symbols-rounded");
+    const trashButton = this._element.querySelector(".delete");
     const cardImage = this._element.querySelector(".gallery__image");
+    const deleteButton = 
 
+  
     likeButton.addEventListener("click", (evt) => this._handleLike(evt));
     trashButton.addEventListener("click", (evt) => this._handleDelete(evt));
     cardImage.addEventListener("click", () => { 
       this._handleCardClick(this._title, this._link);
-});
+  });
+    trashButton.addEventListener("click", () => {
+      this._handleDelete();
+  });
+
   }
 
   generateCard() {
     this._element = this._getTemplate();
+    
     const cardTitle = this._element.querySelector(".gallery__image-name");
     const cardImage = this._element.querySelector(".gallery__image");
     
-
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
 

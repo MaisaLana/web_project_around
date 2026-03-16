@@ -53,6 +53,7 @@ function openImagePopup(title, link){
 editButton.addEventListener("click", () => {
 popupName.value = userName.textContent;
 popupDescription.value = userDescription.textContent;
+
  openPopup(popupProfile)});
 
 closePopupProfile.addEventListener("click", () => { closePopup (popupProfile)
@@ -64,8 +65,10 @@ setOverlayClose(popupProfile);
 setEscClose(popupProfile);
 
 //Gallery
-addButton.addEventListener("click", () =>{ openPopup (popupGallery)
+addButton.addEventListener("click", () =>{ galleryForm.reset();
+  openPopup (popupGallery)
 });
+
 closePopupGallery.addEventListener("click", () => { closePopup (popupGallery)
 });
 setOverlayClose(popupGallery);
