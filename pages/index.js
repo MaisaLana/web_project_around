@@ -1,7 +1,8 @@
 import { Card } from "../components/card.js";
-import { openPopup, closePopup, setEscClose, setOverlayClose} from "../scripts/utils.js";
+// import { openPopup, closePopup, setEscClose, setOverlayClose} from "../scripts/utils.js";
 import { FormValidator } from "../scripts/formValidator.js";
 import Section from "../components/section.js";
+import  popup from "../components/popup.js";
 
 
 
@@ -42,7 +43,7 @@ function handleProfileFormSubmit(evt){
 evt.preventDefault();
 userName.textContent = popupName.value;
 userDescription.textContent = popupDescription.value;
-closePopup(popupProfile);
+profilePopup.close();
 }
 
 //Expandir imagem
@@ -57,26 +58,28 @@ function openImagePopup(title, link){
 editButton.addEventListener("click", () => {
 popupName.value = userName.textContent;
 popupDescription.value = userDescription.textContent;
-
- openPopup(popupProfile)});
-
-closePopupProfile.addEventListener("click", () => { closePopup (popupProfile)
+profilePopup.open();
+profilePopup._handleEscClose();
 });
-const submit = formElement.addEventListener("submit", handleProfileFormSubmit);
-formElement.addEventListener("keydown", submit)
 
-setOverlayClose(popupProfile);
-setEscClose(popupProfile);
+closePopupProfile.addEventListener("click", () => { profilePopup.close();
+});
+// const submit = formElement.addEventListener("submit", handleProfileFormSubmit);
+// formElement.addEventListener("keydown", submit)
+
+// setOverlayClose(popupProfile);
+// setEscClose(popupProfile);
 
 //Gallery
 addButton.addEventListener("click", () =>{ galleryForm.reset();
-  openPopup (popupGallery)
+  galleryPopup.open();
+  galleryPopup._handleEscClose();
 });
 
-closePopupGallery.addEventListener("click", () => { closePopup (popupGallery)
+closePopupGallery.addEventListener("click", () => { galleryPopup.close()
 });
-setOverlayClose(popupGallery);
-setEscClose(popupGallery);
+// setOverlayClose(popupGallery);
+// setEscClose(popupGallery);
 
 //Gallery_likes
 likes.forEach(like => {
@@ -106,7 +109,7 @@ function addCard (title, link){
 function handlegalleryformsubmit(evt){
 evt.preventDefault ();
 addCard (imageTitle.value, imageLink.value);
-closePopup (popupGallery);
+galleryPopup.close();
 }
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
@@ -130,8 +133,8 @@ galleryImages.forEach(galleryImage => {
 
 closePopupImage.addEventListener("click", () => {
 closePopup(popupImage)});
-setEscClose(popupImage);
-setOverlayClose(popupImage);
+// popupImage.close();
+// setOverlayClose(popupImage);
 
 const section = new Section ({
   items: initialCards, 
@@ -144,3 +147,9 @@ const section = new Section ({
   ".gallery"
 );
   section.renderItems();
+
+const profilePopup = new popup("#popup__profile");
+const galleryPopup = new popup("#popup__gallery");
+
+profilePopup.setEventListeners();
+galleryPopup.setEventListeners();
