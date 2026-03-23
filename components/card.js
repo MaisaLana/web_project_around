@@ -10,7 +10,7 @@ export class Card {
     const cardElement = document
       .querySelector(this._templateSelector)
       .content
-      .querySelector(".gallery__item")
+      .querySelector(".gallery__item")  
       .cloneNode(true);
 
     return cardElement;
@@ -29,7 +29,7 @@ export class Card {
     const likeButton = this._element.querySelector(".material-symbols-outlined");
     const trashButton = this._element.querySelector(".delete");
     const cardImage = this._element.querySelector(".gallery__image");
-    const deleteButton = 
+    // const deleteButton = 
 
   
     likeButton.addEventListener("click", (evt) => this._handleLike(evt));

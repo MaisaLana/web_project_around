@@ -1,6 +1,8 @@
-import { Card } from "./card.js";
-import { openPopup, closePopup, setEscClose, setOverlayClose} from "./utils.js";
-import { FormValidator } from "./formValidator.js";
+import { Card } from "../components/card.js";
+import { openPopup, closePopup, setEscClose, setOverlayClose} from "../scripts/utils.js";
+import { FormValidator } from "../scripts/formValidator.js";
+import Section from "../components/section.js";
+
 
 
 //validação
@@ -33,6 +35,8 @@ const card = document.querySelector(".gallery");
 const popupImage = document.querySelector(".popup--image");
 const closePopupImage = popupImage.querySelector(".popup__image-close");
 const galleryImages = card.querySelectorAll(".gallery__image");
+
+
 
 function handleProfileFormSubmit(evt){
 evt.preventDefault();
@@ -99,10 +103,6 @@ function addCard (title, link){
   { name: "Lago de Braies", link: "images/lagodebraies.png" }
 ];
 
-initialCards.forEach((item) => {
-  addCard(item.name, item.link);
-});
-
 function handlegalleryformsubmit(evt){
 evt.preventDefault ();
 addCard (imageTitle.value, imageLink.value);
@@ -132,3 +132,15 @@ closePopupImage.addEventListener("click", () => {
 closePopup(popupImage)});
 setEscClose(popupImage);
 setOverlayClose(popupImage);
+
+const section = new Section ({
+  items: initialCards, 
+  renderer: (item) => {
+    const card = new Card(item.name, item.link, "#gallery__template", openImagePopup);
+    const cardElement = card.generateCard();
+    section.addItem(cardElement);
+    }
+  },
+  ".gallery"
+);
+  section.renderItems();
