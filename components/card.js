@@ -29,7 +29,6 @@ export class Card {
     const likeButton = this._element.querySelector(".material-symbols-outlined");
     const trashButton = this._element.querySelector(".delete");
     const cardImage = this._element.querySelector(".gallery__image");
-    // const deleteButton = 
 
   
     likeButton.addEventListener("click", (evt) => this._handleLike(evt));
@@ -57,3 +56,4 @@ export class Card {
     return this._element;
   }
 }
+

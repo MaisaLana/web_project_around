@@ -1,9 +1,8 @@
 import { Card } from "../components/card.js";
-// import { openPopup, closePopup, setEscClose, setOverlayClose} from "../scripts/utils.js";
-import { FormValidator } from "../scripts/formValidator.js";
+import { FormValidator } from "../components/formValidator.js";
 import Section from "../components/section.js";
-import  popup from "../components/popup.js";
-
+import popup from "../components/popup.js";
+import popupWithImage from "../components/popupWithImage.js";
 
 
 //validação
@@ -47,11 +46,9 @@ profilePopup.close();
 }
 
 //Expandir imagem
-function openImagePopup(title, link){
-  const imageFooter = document.querySelector(".popup__image-footer");
-  popupImg.src = link;
-  popupImage.style.display = "flex";
-  imageFooter.textContent = title;
+function openImagePopup(title, link, alt){
+  imagePopup.open(title, link, alt);
+  imagePopup._handleEscClose();
 }
 
 //profile
@@ -64,11 +61,6 @@ profilePopup._handleEscClose();
 
 closePopupProfile.addEventListener("click", () => { profilePopup.close();
 });
-// const submit = formElement.addEventListener("submit", handleProfileFormSubmit);
-// formElement.addEventListener("keydown", submit)
-
-// setOverlayClose(popupProfile);
-// setEscClose(popupProfile);
 
 //Gallery
 addButton.addEventListener("click", () =>{ galleryForm.reset();
@@ -78,8 +70,6 @@ addButton.addEventListener("click", () =>{ galleryForm.reset();
 
 closePopupGallery.addEventListener("click", () => { galleryPopup.close()
 });
-// setOverlayClose(popupGallery);
-// setEscClose(popupGallery);
 
 //Gallery_likes
 likes.forEach(like => {
@@ -114,27 +104,10 @@ galleryPopup.close();
 
 galleryForm.addEventListener("submit", handlegalleryformsubmit);
 
-
-//expandir image
-const popupImg = document.querySelector(".popup__image-expand");
-galleryImages.forEach(galleryImage => {
-  galleryImage.addEventListener("click", () => {
-    const imageName = galleryImage.closest(".gallery__item").querySelector(".gallery__image-name").textContent;
-    const imageFooter = document.querySelector(".popup__image-footer");
-    popupImg.src = galleryImage.src;
-    popupImg.alt = galleryImage.alt;
-    imageFooter.textContent = imageName;
-
-    openPopup(popupImage);
-  });
+closePopupImage.addEventListener("click", () => {
+imagePopup.close();
 });
 
-
-
-closePopupImage.addEventListener("click", () => {
-closePopup(popupImage)});
-// popupImage.close();
-// setOverlayClose(popupImage);
 
 const section = new Section ({
   items: initialCards, 
@@ -147,9 +120,12 @@ const section = new Section ({
   ".gallery"
 );
   section.renderItems();
-
+  
 const profilePopup = new popup("#popup__profile");
 const galleryPopup = new popup("#popup__gallery");
+const imagePopup = new popupWithImage ("#area");
 
 profilePopup.setEventListeners();
 galleryPopup.setEventListeners();
+imagePopup.setEventListeners();
+
