@@ -1,22 +1,22 @@
-import { Card } from "../components/card.js";
-import { FormValidator } from "../components/formValidator.js";
-import Section from "../components/section.js";
-import popupWithImage from "../components/popupWithImage.js";
-import popupWithForms from "../components/popupWithForms.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForms from "../components/PopupWithForms.js";
 import Userinfo from "../components/UserInfo.js";
 
 //instances
 const validator = new FormValidator();
 validator.enableValidation();
 
-const profilePopup = new popupWithForms("#popup__profile", (data) =>{
+const profilePopup = new PopupWithForms("#popup__profile", (data) =>{
   userInfo.setUserInfo(data);
 });
-const galleryPopup = new popupWithForms ("#popup__gallery", (data) =>{
+const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
   addCard(data["image-title"], data["image-link"]);
 });
 
-const imagePopup = new popupWithImage ("#area");
+const imagePopup = new PopupWithImage ("#area");
 const userInfo = new Userinfo ({
   name: ".profile__name",
   description: ".profile__profession"
