@@ -5,38 +5,10 @@ import popupWithImage from "../components/popupWithImage.js";
 import popupWithForms from "../components/popupWithForms.js";
 import Userinfo from "../components/UserInfo.js";
 
-//validação
+//instances
 const validator = new FormValidator();
 validator.enableValidation();
 
-//Popups
-const popupProfile = document.querySelector("#popup__profile");
-const popupGallery = document.querySelector("#popup__gallery");
-
-//buttons
-const editButton = document.querySelector(".profile__edit-button");
-const addButton = document.querySelector(".profile__add-button");
-const closePopupProfile = popupProfile.querySelector(".popup__button-close");
-const closePopupGallery = popupGallery.querySelector(".popup__button-close");
-
-//Popup__Elements
-const popupName = document.querySelector("#name");
-const popupDescription = document.querySelector("#description");
-const userName = document.querySelector(".profile__name");
-const userDescription = document.querySelector(".profile__profession");
-const formElement = document.querySelector(".popup__form");
-const imageLink = popupGallery.querySelector("#image-link");
-const imageTitle = popupGallery.querySelector("#image-title");
-const galleryForm = popupGallery.querySelector(".popup__form");
-
-//Gallery__Elements
-const likes = document.querySelectorAll(".material-symbols-outlined");
-const card = document.querySelector(".gallery");
-const popupImage = document.querySelector(".popup--image");
-const closePopupImage = popupImage.querySelector(".popup__image-close");
-const galleryImages = card.querySelectorAll(".gallery__image");
-
-//modern__constants
 const profilePopup = new popupWithForms("#popup__profile", (data) =>{
   userInfo.setUserInfo(data);
 });
@@ -50,6 +22,39 @@ const userInfo = new Userinfo ({
   description: ".profile__profession"
 });
 
+const section = new Section ({
+  items: [
+  { name: "Vale de Yosemite", link: "images/valeyousemite.jpg" },
+  { name: "Lago Louise", link: "images/lagolouise.png" },
+  { name: "Montanhas Care...", link: "images/montanhas.png" },
+  { name: "Latemar", link: "images/latemar.png" },
+  { name: "Parque Nacional...", link: "images/parquenacional.png" },
+  { name: "Lago de Braies", link: "images/lagodebraies.png" }
+], 
+  renderer: (item) => {
+    const card = new Card(item.name, item.link, "#gallery__template", openImagePopup);
+    const cardElement = card.generateCard();
+    section.addItem(cardElement);
+    }
+  },
+  ".gallery"
+);
+  section.renderItems();
+
+
+//buttons
+const editButton = document.querySelector(".profile__edit-button");
+const addButton = document.querySelector(".profile__add-button");
+
+
+//Popup__Elements
+const popupName = document.querySelector("#name");
+const popupDescription = document.querySelector("#description");
+const galleryForm = document.querySelector(".popup__form");
+
+//Gallery__Elements
+const likes = document.querySelectorAll(".material-symbols-outlined");
+const card = document.querySelector(".gallery");
 
 //Expandir imagem
 function openImagePopup(title, link, alt){
@@ -67,68 +72,17 @@ editButton.addEventListener("click", () => {
   profilePopup.open();
 });
 
-closePopupProfile.addEventListener("click", () => { profilePopup.close();
-});
-
 //Gallery
 addButton.addEventListener("click", () =>{ galleryForm.reset();
   galleryPopup.open();
 });
 
-closePopupGallery.addEventListener("click", () => { galleryPopup.close()
-});
-
-//Gallery_likes
-likes.forEach(like => {
-  like.addEventListener("click", () => {
-  like.classList.toggle("material-symbols-rounded");  
-  like.classList.toggle("material-symbols-outlined"); 
-});
-});
-
-
-// adicionar imagem 
+// add image
 function addCard (title, link){
     const cardInstance = new Card(title,link, "#gallery__template",openImagePopup);
     const cardElement = cardInstance.generateCard();
     card.prepend(cardElement);
   };
-
-  const initialCards = [
-  { name: "Vale de Yosemite", link: "images/valeyousemite.jpg" },
-  { name: "Lago Louise", link: "images/lagolouise.png" },
-  { name: "Montanhas Care...", link: "images/montanhas.png" },
-  { name: "Latemar", link: "images/latemar.png" },
-  { name: "Parque Nacional...", link: "images/parquenacional.png" },
-  { name: "Lago de Braies", link: "images/lagodebraies.png" }
-];
-
-function handlegalleryformsubmit(evt){
-evt.preventDefault ();
-addCard (imageTitle.value, imageLink.value);
-galleryPopup.close();
-}
-
-
-closePopupImage.addEventListener("click", () => {
-imagePopup.close();
-});
-
-
-const section = new Section ({
-  items: initialCards, 
-  renderer: (item) => {
-    const card = new Card(item.name, item.link, "#gallery__template", openImagePopup);
-    const cardElement = card.generateCard();
-    section.addItem(cardElement);
-    }
-  },
-  ".gallery"
-);
-  section.renderItems();
-  
-
-
 
 profilePopup.setEventListeners();
 galleryPopup.setEventListeners();

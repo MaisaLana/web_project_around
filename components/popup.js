@@ -2,6 +2,7 @@ export default class popup {
     constructor(selector){
         this._popup = document.querySelector(selector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._closeButton = this._popup.querySelector(".popup__button-close, .popup__image-close");
     }
 
     open() {
@@ -31,6 +32,10 @@ this._popup.addEventListener("click", (evt) => {
     if (evt.target === this._popup){
      this.close();
     }
-})
-}
-}
+});
+  if (this._closeButton) {
+    this._closeButton.addEventListener("click", () => {
+      this.close();
+    });
+  }
+}}

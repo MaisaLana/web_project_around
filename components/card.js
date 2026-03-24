@@ -36,10 +36,7 @@ export class Card {
     cardImage.addEventListener("click", () => { 
       this._handleCardClick(this._title, this._link);
   });
-    trashButton.addEventListener("click", () => {
-      this._handleDelete();
-  });
-
+ 
   }
 
   generateCard() {
