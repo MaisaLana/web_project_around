@@ -1,9 +1,9 @@
 import { Card } from "../components/card.js";
 import { FormValidator } from "../components/formValidator.js";
 import Section from "../components/section.js";
-import popup from "../components/popup.js";
 import popupWithImage from "../components/popupWithImage.js";
-
+import popupWithForms from "../components/popupWithForms.js";
+import Userinfo from "../components/UserInfo.js";
 
 //validação
 const validator = new FormValidator();
@@ -36,14 +36,20 @@ const popupImage = document.querySelector(".popup--image");
 const closePopupImage = popupImage.querySelector(".popup__image-close");
 const galleryImages = card.querySelectorAll(".gallery__image");
 
+//modern__constants
+const profilePopup = new popupWithForms("#popup__profile", (data) =>{
+  userInfo.setUserInfo(data);
+});
+const galleryPopup = new popupWithForms ("#popup__gallery", (data) =>{
+  addCard(data["image-title"], data["image-link"]);
+});
 
+const imagePopup = new popupWithImage ("#area");
+const userInfo = new Userinfo ({
+  name: ".profile__name",
+  description: ".profile__profession"
+});
 
-function handleProfileFormSubmit(evt){
-evt.preventDefault();
-userName.textContent = popupName.value;
-userDescription.textContent = popupDescription.value;
-profilePopup.close();
-}
 
 //Expandir imagem
 function openImagePopup(title, link, alt){
@@ -53,10 +59,12 @@ function openImagePopup(title, link, alt){
 
 //profile
 editButton.addEventListener("click", () => {
-popupName.value = userName.textContent;
-popupDescription.value = userDescription.textContent;
-profilePopup.open();
-profilePopup._handleEscClose();
+  const data = userInfo.getUserInfo();
+
+  popupName.value = data.name;
+  popupDescription.value = data.description;
+
+  profilePopup.open();
 });
 
 closePopupProfile.addEventListener("click", () => { profilePopup.close();
@@ -65,7 +73,6 @@ closePopupProfile.addEventListener("click", () => { profilePopup.close();
 //Gallery
 addButton.addEventListener("click", () =>{ galleryForm.reset();
   galleryPopup.open();
-  galleryPopup._handleEscClose();
 });
 
 closePopupGallery.addEventListener("click", () => { galleryPopup.close()
@@ -102,7 +109,6 @@ addCard (imageTitle.value, imageLink.value);
 galleryPopup.close();
 }
 
-galleryForm.addEventListener("submit", handlegalleryformsubmit);
 
 closePopupImage.addEventListener("click", () => {
 imagePopup.close();
@@ -121,9 +127,8 @@ const section = new Section ({
 );
   section.renderItems();
   
-const profilePopup = new popup("#popup__profile");
-const galleryPopup = new popup("#popup__gallery");
-const imagePopup = new popupWithImage ("#area");
+
+
 
 profilePopup.setEventListeners();
 galleryPopup.setEventListeners();
