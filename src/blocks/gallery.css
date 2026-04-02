@@ -111,10 +111,10 @@
 .popup__image-close {
 background: none;
 border: none;
-position: absolute;
-top: -40px;
-left: 1020px;
-width: 40px;
+position: fixed;
+top: 60px;
+right: -495px;
+width: 100%;
 height: 40px;
 cursor: pointer;
 }
@@ -132,8 +132,22 @@ font-size: 12px;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
   max-width: 600px;
+
   
-}}
+  
+}
+
+.popup__image-close {
+top: 60px;
+right: -350px;
+/* max-width: 30px; */
+height: 30px;
+width: 100%;
+}
+}
+
+
+
 
 @media screen and (max-width: 770px){
 .gallery {
@@ -149,9 +163,8 @@ font-size: 12px;
 }
 
 .popup__image-close {
-left: 235px;
-width:30px;
+right: -270px;
 height: 30px;
-cursor: pointer;
+
 }
 }
