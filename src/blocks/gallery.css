@@ -104,6 +104,7 @@
   width: 100%;       
   height: 100%;     
   display: block;    
+  
   margin: 0 auto 10px;  
   object-fit: cover; 
 }
@@ -131,7 +132,6 @@ font-size: 12px;
 .gallery {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  /* margin: 50px 100px; */
   max-width: 600px;
   
 }}
