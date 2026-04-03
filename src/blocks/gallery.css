@@ -112,8 +112,8 @@
 background: none;
 border: none;
 position: fixed;
-top: 60px;
-right: -495px;
+top: 83px;
+right: -490px;
 width: 100%;
 height: 40px;
 cursor: pointer;
@@ -139,13 +139,12 @@ font-size: 12px;
 
 .popup__image-close {
 top: 60px;
-right: -350px;
+right: -340px;
 /* max-width: 30px; */
 height: 30px;
 width: 100%;
 }
 }
-
 
 
 
