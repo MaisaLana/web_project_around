@@ -4,6 +4,17 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForms from "../components/PopupWithForms.js";
 import Userinfo from "../components/UserInfo.js";
+import { Api } from "../components/API.js";
+
+const API = new Api({
+  baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
+  headers: {
+    authorization: "4d6c5a35-bd42-4b4d-bec8-cf5b5ab26f12",
+    "Content-Type": "application/json"
+  },
+});
+
+
 
 //instances
 const validator = new FormValidator();
@@ -22,8 +33,22 @@ const userInfo = new Userinfo ({
   description: ".profile__profession"
 });
 
+// Promise.all([
+//   API.getUserInfo(),
+//   API.getInitialCards()
+// ])
+// .then(([userData, cards]) => {
+
+//   console.log(userData);
+//   console.log(cards);
+
+// })
+// .catch(err => console.log(err));
+
+
+
 const section = new Section ({
-  items: [
+  cards: [
   { name: "Vale de Yosemite", link: "images/valeyousemite.jpg" },
   { name: "Lago Louise", link: "images/lagolouise.png" },
   { name: "Montanhas Care...", link: "images/montanhas.png" },
