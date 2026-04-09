@@ -91,7 +91,7 @@
         </div>
        
       </section>
-      <section id="popup__profile-check" class="popup--active">
+      <section id="popup__profile-check" class="popup">
         <div class="popup__container popup__container-check">
           <h2 class="popup__title popup__title-check">Tem certeza ? </h2>
           <form class="popup__form">
@@ -102,6 +102,42 @@
             src="images/closeicon.png"
             alt="botão para fechar"> 
           </button>       
+        </div>
+        
+      </section>
+      
+      <section id="popup__gallery" class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Nova local</h2>
+          <form class="popup__form">
+            <div class="popup__items">
+            <input 
+            type="text" 
+            id="image-title" 
+            placeholder="Titulo" 
+            class="popup__item"
+            minlength="2"
+            maxlength="30"
+            required>
+            <span class="popup__image-title-error"></span>
+            </div>
+            <div class="popup__items">
+            <input
+              type="url"
+              id="image-link"
+              placeholder="Link de imagem"
+              class="popup__item"
+              required
+            >
+            <span class="popup__image-link-error"></span>
+            </div>
+            <button type="submit" class="popup__button">Criar</button>
+          </form>
+          <button type="button" class="popup__button-close">
+            <img class="popup__close-icon"
+            src="images/closeicon.png"
+            alt="botão para fechar"> 
+          </button>         
         </div>
         
       </section>
