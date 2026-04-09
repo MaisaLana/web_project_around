@@ -48,7 +48,7 @@ const userInfo = new Userinfo ({
 
 
 const section = new Section ({
-  cards: [
+  items: [
   { name: "Vale de Yosemite", link: "images/valeyousemite.jpg" },
   { name: "Lago Louise", link: "images/lagolouise.png" },
   { name: "Montanhas Care...", link: "images/montanhas.png" },

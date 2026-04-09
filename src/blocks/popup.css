@@ -18,8 +18,9 @@
 
 .popup__container {
   background-color: #ffffff;
-  width: 430px;
-  height: 330px;
+  max-width: 430px;
+  width:100%;
+  min-height: 330px;
   position: relative;
   border: #000000 1px;
   color: #000000;
@@ -115,6 +116,16 @@ cursor: pointer;
   display: none;
   
 } 
+
+.popup__container-check {
+min-height: 181px;
+
+}
+
+.popup__title-check{
+  margin-bottom: 38px;
+}
+
 
 @media screen and (max-width: 770px){
 .popup__container{
