@@ -23,8 +23,7 @@ export class Api {
             {headers: this._headers})
             .then(this._checkResponse);
     }
-// duvidas: não tem que passar o id para editar o usuário
-// e a edição da foto de perfil também n deve ficar aqui
+
     editProfile(data){
         return fetch(`${this._baseUrl}/users/me`,{
         method: "PATCH",

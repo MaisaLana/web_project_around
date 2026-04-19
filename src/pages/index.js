@@ -16,7 +16,6 @@ const API = new Api({
 });
 
 
-
 //instances
 const validator = new FormValidator();
 validator.enableValidation();
@@ -35,40 +34,50 @@ const userInfo = new Userinfo ({
   description: ".profile__profession"
 });
 
-// Promise.all([
-//   API.getUserInfo(),
-//   API.getInitialCards()
-// ])
-// .then(([userData, cards]) => {
-
-//   console.log(userData);
-//   console.log(cards);
-
-// })
-// .catch(err => console.log(err));
-
-
 
 const section = new Section ({
   items: [], 
   renderer: (item) => {
-    const card = new Card(item.name, item.link, "#gallery__template", openImagePopup);
+    const card = new Card(
+      item.name,
+      item.link,
+      "#gallery__template", 
+      openImagePopup
+    );
     const cardElement = card.generateCard();
     section.addItem(cardElement);
     }
   },
   ".gallery"
 );
-  API.getInitialCards()
-  .then(cards =>{
-    section.renderItems(cards);
-  })
-  .catch(err => console.log(err));
 
+//Instancia a classe
+const imgProfile = new ImgProfile(".profile__image");
+
+//pega o link do fomulario e altera a imagem de perfil
+const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
+  imgProfile.editImage(data["image-link"]);
+});
+
+Promise.all([
+  API.getUserInfo(),
+  API.getInitialCards()
+]).then(([userData, cards]) => {
+  userInfo.setUserInfo({
+    name: userData.name,
+    description: userData.about
+  });
+
+  imgProfile.editImage(userData.avatar);
+
+  section.renderItems(cards);
+}).catch(() => {});
+
+  
 //buttons
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
-
+const imgProfileButton = document.querySelector(".profile__image-edit");
 
 
 //Popup__Elements
@@ -77,7 +86,7 @@ const popupDescription = document.querySelector("#description");
 const galleryForm = document.querySelector(".popup__form");
 
 //Gallery__Elements
-const likes = document.querySelectorAll(".material-symbols-outlined");
+// const likes = document.querySelectorAll(".material-symbols-outlined");
 const card = document.querySelector(".gallery");
 
 //Expandir imagem
@@ -96,8 +105,6 @@ editButton.addEventListener("click", () => {
   profilePopup.open();
 });
 
-
-
 //Gallery
 addButton.addEventListener("click", () =>{ galleryForm.reset();
   galleryPopup.open();
@@ -110,28 +117,13 @@ function addCard (title, link){
     card.prepend(cardElement);
   };
 
-
-
-profilePopup.setEventListeners();
-galleryPopup.setEventListeners();
-imagePopup.setEventListeners();
-
-
-//Botão de editar imagem
-const imgProfileButton = document.querySelector(".profile__image-edit");
-
-//Instancia a classe
-const imgProfile = new ImgProfile(".profile__image");
-
-//pega o link do fomulario e altera a imagem de perfil
-const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
-  imgProfile.editImage(data["image-link"]);
-});
-
-
-//faz o popup funcionar
+//editar avatar
 imgProfileButton.addEventListener("click", () =>{
   imgProfilePopup.open();
 })
 
+profilePopup.setEventListeners();
+galleryPopup.setEventListeners();
+imagePopup.setEventListeners();
 imgProfilePopup.setEventListeners();
+
