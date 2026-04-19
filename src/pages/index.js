@@ -21,8 +21,22 @@ const validator = new FormValidator();
 validator.enableValidation();
 
 const profilePopup = new PopupWithForms("#popup__profile", (data) =>{
-  userInfo.setUserInfo(data);
+  API.editProfile({
+    name: data.name,
+    about: data.description
+  })
+  .then((userData)=>{
+    userInfo.setUserInfo({
+      name:userData.name,
+      description:userData.about
+    });
+
+    profilePopup.close();
+  });
+
 });
+
+
 const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
   addCard(data["image-title"], data["image-link"]);
 });
