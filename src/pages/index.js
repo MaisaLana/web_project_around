@@ -50,14 +50,7 @@ const userInfo = new Userinfo ({
 
 
 const section = new Section ({
-  items: [
-  { name: "Vale de Yosemite", link: "images/valeyousemite.jpg" },
-  { name: "Lago Louise", link: "images/lagolouise.png" },
-  { name: "Montanhas Care...", link: "images/montanhas.png" },
-  { name: "Latemar", link: "images/latemar.png" },
-  { name: "Parque Nacional...", link: "images/parquenacional.png" },
-  { name: "Lago de Braies", link: "images/lagodebraies.png" }
-], 
+  items: [], 
   renderer: (item) => {
     const card = new Card(item.name, item.link, "#gallery__template", openImagePopup);
     const cardElement = card.generateCard();
@@ -66,8 +59,11 @@ const section = new Section ({
   },
   ".gallery"
 );
-  section.renderItems();
-
+  API.getInitialCards()
+  .then(cards =>{
+    section.renderItems(cards);
+  })
+  .catch(err => console.log(err));
 
 //buttons
 const editButton = document.querySelector(".profile__edit-button");
