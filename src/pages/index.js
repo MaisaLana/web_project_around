@@ -37,10 +37,24 @@ const profilePopup = new PopupWithForms("#popup__profile", (data) =>{
 });
 
 
-const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
-  addCard(data["image-title"], data["image-link"]);
-});
 
+const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
+  API.addCard({
+    name: data["image-title"],
+    link: data["image-link"]
+  }).then((cardData)=>{
+    const card = new Card (
+      cardData.name,
+      cardData.link,
+      "#gallery__template",
+      openImagePopup
+    );
+    const cardElement = card.generateCard();
+    section.addItem(cardElement);
+
+    galleryPopup.close();
+  });
+});
 
 const imagePopup = new PopupWithImage ("#area");
 const userInfo = new Userinfo ({
@@ -69,9 +83,6 @@ const section = new Section ({
 const imgProfile = new ImgProfile(".profile__image");
 
 //pega o link do fomulario e altera a imagem de perfil
-// const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
-//   imgProfile.editImage(data["image-link"]);
-// });
 
 const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
   API.editImageProfile({
@@ -133,12 +144,6 @@ addButton.addEventListener("click", () =>{ galleryForm.reset();
   galleryPopup.open();
 });
 
-// add image
-function addCard (title, link){
-    const cardInstance = new Card(title,link, "#gallery__template",openImagePopup);
-    const cardElement = cardInstance.generateCard();
-    card.prepend(cardElement);
-  };
 
 //editar avatar
 imgProfileButton.addEventListener("click", () =>{
