@@ -121,7 +121,7 @@ const galleryForm = document.querySelector(".popup__form");
 
 //Gallery__Elements
 // const likes = document.querySelectorAll(".material-symbols-outlined");
-const card = document.querySelector(".gallery");
+// const card = document.querySelector(".gallery");
 
 //Expandir imagem
 function openImagePopup(title, link, alt){
