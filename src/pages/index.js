@@ -69,8 +69,17 @@ const section = new Section ({
 const imgProfile = new ImgProfile(".profile__image");
 
 //pega o link do fomulario e altera a imagem de perfil
+// const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
+//   imgProfile.editImage(data["image-link"]);
+// });
+
 const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
-  imgProfile.editImage(data["image-link"]);
+  API.editImageProfile({
+    link: data["image-link"]
+  }).then((userData)=>{
+    imgProfile.editImage(userData.avatar);
+    imgProfilePopup.close();
+  });
 });
 
 Promise.all([
