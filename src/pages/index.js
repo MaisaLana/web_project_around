@@ -5,6 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForms from "../components/PopupWithForms.js";
 import Userinfo from "../components/UserInfo.js";
 import { Api } from "../components/API.js";
+import { ImgProfile } from "../components/ImgProfile.js";
 
 const API = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
@@ -26,6 +27,7 @@ const profilePopup = new PopupWithForms("#popup__profile", (data) =>{
 const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
   addCard(data["image-title"], data["image-link"]);
 });
+
 
 const imagePopup = new PopupWithImage ("#area");
 const userInfo = new Userinfo ({
@@ -72,6 +74,7 @@ const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
 
+
 //Popup__Elements
 const popupName = document.querySelector("#name");
 const popupDescription = document.querySelector("#description");
@@ -97,6 +100,8 @@ editButton.addEventListener("click", () => {
   profilePopup.open();
 });
 
+
+
 //Gallery
 addButton.addEventListener("click", () =>{ galleryForm.reset();
   galleryPopup.open();
@@ -109,7 +114,28 @@ function addCard (title, link){
     card.prepend(cardElement);
   };
 
+
+
 profilePopup.setEventListeners();
 galleryPopup.setEventListeners();
 imagePopup.setEventListeners();
 
+
+//Botão de editar imagem
+const imgProfileButton = document.querySelector(".profile__image-edit");
+
+//Instancia a classe
+const imgProfile = new ImgProfile(".profile__image");
+
+//pega o link do fomulario e altera a imagem de perfil
+const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
+  imgProfile.editImage(data["image-link"]);
+});
+
+
+//faz o popup funcionar
+imgProfileButton.addEventListener("click", () =>{
+  imgProfilePopup.open();
+})
+
+imgProfilePopup.setEventListeners();
