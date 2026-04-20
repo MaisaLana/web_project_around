@@ -26,9 +26,6 @@ export class Card {
     evt.target.classList.toggle("material-symbols-outlined");
   }
 
-  // _handleDelete(evt) {
-  // this._element.remove();
-  // }
 
   _setEventListeners() {
     const likeButton = this._element.querySelector(".gallery__image-like");
