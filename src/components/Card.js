@@ -1,5 +1,5 @@
 export class Card {
-  constructor(title, link, isLiked, id, templateSelector, handleCardClick, handleLikeApi) {
+  constructor(title, link, isLiked, id, templateSelector, handleCardClick, handleLikeApi, doubleCheck) {
     this._title = title;
     this._link = link;
     this._templateSelector = templateSelector;
@@ -7,6 +7,8 @@ export class Card {
     this._isLiked = isLiked;
     this._id = id;
     this._handleLikeApi = handleLikeApi;
+    this._doubleCheck = doubleCheck;
+  
   }
 
   _getTemplate() {
@@ -24,9 +26,9 @@ export class Card {
     evt.target.classList.toggle("material-symbols-outlined");
   }
 
-  _handleDelete(evt) {
-  this._element.remove();
-  }
+  // _handleDelete(evt) {
+  // this._element.remove();
+  // }
 
   _setEventListeners() {
     const likeButton = this._element.querySelector(".gallery__image-like");
@@ -38,7 +40,9 @@ export class Card {
       this._handleLike(evt);
       this._handleLikeApi(this._id, this._isLiked);
   });
-    trashButton.addEventListener("click", (evt) => this._handleDelete(evt));
+    trashButton.addEventListener("click", () => {
+      this._doubleCheck(this._id, this._element)
+    });
     cardImage.addEventListener("click", () => { 
       this._handleCardClick(this._title, this._link);
   });

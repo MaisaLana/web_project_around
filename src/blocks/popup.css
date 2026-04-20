@@ -117,12 +117,12 @@ cursor: pointer;
   
 } 
 
-.popup__container-check {
+.popup__check-container {
 min-height: 181px;
 
 }
 
-.popup__title-check{
+.popup__check-title{
   margin-bottom: 38px;
 }
 

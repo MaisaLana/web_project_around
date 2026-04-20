@@ -6,6 +6,7 @@ import PopupWithForms from "../components/PopupWithForms.js";
 import Userinfo from "../components/UserInfo.js";
 import { Api } from "../components/API.js";
 import { ImgProfile } from "../components/ImgProfile.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
 const API = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
@@ -38,6 +39,7 @@ const profilePopup = new PopupWithForms("#popup__profile", (data) =>{
 
 
 
+
 const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
   API.addCard({
     name: data["image-title"],
@@ -50,7 +52,8 @@ const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
       cardData._id,
       "#gallery__template",
       openImagePopup,
-      handleLikeApi
+      handleLikeApi,
+      doubleCheck
     );
     const cardElement = card.generateCard();
     section.addItem(cardElement);
@@ -76,7 +79,9 @@ const section = new Section ({
       item._id,
       "#gallery__template", 
       openImagePopup,
-      handleLikeApi
+      handleLikeApi,
+      doubleCheck
+      
     );
     const cardElement = card.generateCard();
     section.addItem(cardElement);
@@ -98,6 +103,8 @@ const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
   });
 });
 
+
+
 Promise.all([
   API.getUserInfo(),
   API.getInitialCards()
@@ -117,7 +124,6 @@ Promise.all([
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const imgProfileButton = document.querySelector(".profile__image-edit");
-
 
 
 //Popup__Elements
@@ -143,7 +149,20 @@ function handleLikeApi (id, isLiked){
   }
 }
 
+function doubleCheck (id, element){
+  popupCheck.getValues(id, element);
+  popupCheck.open()
+}
 
+function handleFormSubmit (id, element){
+  API.deleteCard(id).then(() => {
+      element.remove(); 
+    }).catch((err) => console.log(err))
+
+  popupCheck.close()
+  }
+
+  const popupCheck = new PopupWithConfirmation ("#popup__gallery-check", handleFormSubmit);
 //profile
 editButton.addEventListener("click", () => {
   const data = userInfo.getUserInfo();
@@ -165,9 +184,9 @@ imgProfileButton.addEventListener("click", () =>{
   imgProfilePopup.open();
 })
 
-
 profilePopup.setEventListeners();
 galleryPopup.setEventListeners();
 imagePopup.setEventListeners();
 imgProfilePopup.setEventListeners();
+popupCheck.setEventListeners();
 
