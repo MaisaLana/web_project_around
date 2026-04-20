@@ -44,18 +44,21 @@
 
 }
 
-.material-symbols-outlined {
+.gallery__image-like{
   margin-right: 15px;
+  cursor:pointer;
+}
+.material-symbols-outlined {
+
 }
 
-.material-symbols-outlined:hover{
+.gallery__image-like:hover{
   opacity: 0.5;
   cursor: pointer;
 }
 
 .material-symbols-rounded{
-  margin-right: 15px;
-  cursor:pointer;
+  
 }
 
 .delete{

@@ -46,8 +46,11 @@ const galleryPopup = new PopupWithForms ("#popup__gallery", (data) =>{
     const card = new Card (
       cardData.name,
       cardData.link,
+      cardData.isLiked,
+      cardData._id,
       "#gallery__template",
-      openImagePopup
+      openImagePopup,
+      handleLikeApi
     );
     const cardElement = card.generateCard();
     section.addItem(cardElement);
@@ -69,8 +72,11 @@ const section = new Section ({
     const card = new Card(
       item.name,
       item.link,
+      item.isLiked,
+      item._id,
       "#gallery__template", 
-      openImagePopup
+      openImagePopup,
+      handleLikeApi
     );
     const cardElement = card.generateCard();
     section.addItem(cardElement);
@@ -83,7 +89,6 @@ const section = new Section ({
 const imgProfile = new ImgProfile(".profile__image");
 
 //pega o link do fomulario e altera a imagem de perfil
-
 const imgProfilePopup = new PopupWithForms("#popup__image-profile", (data) =>{
   API.editImageProfile({
     link: data["image-link"]
@@ -99,9 +104,9 @@ Promise.all([
 ]).then(([userData, cards]) => {
   userInfo.setUserInfo({
     name: userData.name,
-    description: userData.about
+    description: userData.about,
   });
-
+  
   imgProfile.editImage(userData.avatar);
 
   section.renderItems(cards);
@@ -114,20 +119,30 @@ const addButton = document.querySelector(".profile__add-button");
 const imgProfileButton = document.querySelector(".profile__image-edit");
 
 
+
 //Popup__Elements
 const popupName = document.querySelector("#name");
 const popupDescription = document.querySelector("#description");
 const galleryForm = document.querySelector(".popup__form");
 
-//Gallery__Elements
-// const likes = document.querySelectorAll(".material-symbols-outlined");
-// const card = document.querySelector(".gallery");
 
 //Expandir imagem
 function openImagePopup(title, link, alt){
   imagePopup.open(title, link, alt);
   imagePopup._handleEscClose();
 }
+
+// alterar o like no servidor
+function handleLikeApi (id, isLiked){
+  if (!isLiked){
+    API.likedCard(id);
+    id = true;
+  } else {
+    API.disLikedCard(id);
+    id = false;
+  }
+}
+
 
 //profile
 editButton.addEventListener("click", () => {
@@ -149,6 +164,7 @@ addButton.addEventListener("click", () =>{ galleryForm.reset();
 imgProfileButton.addEventListener("click", () =>{
   imgProfilePopup.open();
 })
+
 
 profilePopup.setEventListeners();
 galleryPopup.setEventListeners();

@@ -50,17 +50,17 @@ export class Api {
     }
 
 
-    deleteCard(cardId){
-        return fetch(`${this._baseUrl}/cards/${cardId}`,{
+    deleteCard(id){
+        return fetch(`${this._baseUrl}/cards/${id}`,{
             method: "DELETE",
             headers: this._headers
         })
         .then(this._checkResponse);
 
     }
-//duvida: Porque put e não patch ou post
-    likedCard(cardId){
-       return fetch(`${this._baseUrl}/cards/${cardId}/likes`,{
+
+    likedCard(id){
+       return fetch(`${this._baseUrl}/cards/${id}/likes`,{
             method: "PUT",
             headers: this._headers,
         })
