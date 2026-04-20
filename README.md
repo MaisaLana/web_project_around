@@ -36,4 +36,4 @@ JS
 
 Este projeto está sob a licença MIT - sinta-se livre para explorar, modificar e compartilhar!
 
-https://maisalana.github.io/web_project_around/src/
+https://maisalana.github.io/web_project_around_pt/src/
